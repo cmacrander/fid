@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable fid': 'fid:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'fid'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'fid:toggle' }
+      ]
+    ]
+  }
+]
