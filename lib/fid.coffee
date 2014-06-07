@@ -110,12 +110,12 @@ module.exports =
 
     # Initializing function. Atom packages must define it.
     activate: (state) ->
-        atom.workspaceView.command "fid:begin", => @begin()
+        atom.workspaceView.command "fid:start", => @start()
+        atom.workspaceView.command "fid:stop", => @stop()
         atom.workspaceView.command "fid:debug", => @debug()
-        atom.workspaceView.command "fid"
 
     # Turn on the music.
-    begin: ->
+    start: ->
         editor = @getEditor()
 
         # Read details about the current grammar.
@@ -129,7 +129,16 @@ module.exports =
         editor.buffer.on 'changed', @bufferChanged.bind @
         # This is the one currently used.
         atom.workspaceView.eachEditorView (editorView) =>
+            # These two lines are equivalent.
             editorView.on 'cursor:moved', @cursorMoved.bind @
+            # atom.subscribe editorView, 'cursor:moved', @cursorMoved.bind @
+
+    stop: ->
+        atom.workspaceView.eachEditorView (editorView) =>
+            # These two lines are equivalent.
+            editorView.off 'cursor:moved'
+            # atom.unsubscribe editorView, 'cursor:moved'
+
 
     getEditor: ->
         # This assumes the active pane item is an editor
