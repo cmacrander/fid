@@ -55,9 +55,9 @@ module.exports =
         'punctuation.terminator.statement.coffee': 1
         'source.coffee': 1  # tonic
         'storage.type.function.coffee': 1
-        'string.quoted.double.heredoc.coffee': 1
-        'string.quoted.heredoc.coffee': 1
-        'string.quoted.script.coffee': 1
+        'string.quoted.double.heredoc.coffee': 6 / 5
+        'string.quoted.heredoc.coffee': 6 / 5
+        'string.quoted.script.coffee': 6 / 5
         'string.regexp.coffee': 1
         'string.regexp.coffee': 1
         'support.class.coffee': 1
@@ -76,6 +76,7 @@ module.exports =
     activate: (state) ->
         atom.workspaceView.command "fid:begin", => @begin()
         atom.workspaceView.command "fid:debug", => @debug()
+        atom.workspaceView.command "fid"
 
     # Turn on the music.
     begin: ->
@@ -124,28 +125,27 @@ module.exports =
         # moveEvent is a jQuery event with things like .target (a DOM node) and
         # .type ('cursor:moved').
 
-        # Find the word under the cursor.
+        # Get the text of the current line.
         editor = @getEditor()
         line = editor.getCursor().getCurrentBufferLine()
-        currentWord = editor.getWordUnderCursor()
-
-        # The "current word" provided by this method isn't quite what we want.
-        # It often includes a trailing bracket/brace or quote. This regex
-        # should clean it up.
-        regexWordPattern = /\b\S+\b/
-        regexMatches = regexWordPattern.exec currentWord
-        regexWord = if regexMatches is null then '' else regexMatches[0]
 
         # Tokenize ("read") the line and look for the token that matches the
         # current word. It will contain a list of the syntactic categories that
         # apply.
         tokens = @grammar.tokenizeLine(line).tokens
+
+        # Count up the size of tokens from left to right until we get to the
+        # current position of the cursor. That's the token that's currently
+        # being typed.
+        column = editor.getCursor().getBufferColumn()
+        c = 0
         token = undefined
         for t in tokens
-            if t.value.indexOf(regexWord) isnt -1
+            c += t.bufferDelta
+            if c is column
                 token = t
 
-        console.log regexWord, token?.scopes
+        console.log column, token?.value, token?.scopes
 
         # Turn the token into music.
         if token?
