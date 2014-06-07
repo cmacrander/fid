@@ -32,15 +32,36 @@ module.exports =
     dictionary:
         'comment.block.coffee': 5 / 4  # major third
         'comment.line.number-sign.coffee': 5 / 4
+        'constant.character.character-class.regexp': 1
+        'constant.character.control.regexp': 1
+        'constant.character.escape.backslash.regexp': 1
+        'constant.character.escape.coffee': 1
+        'constant.character.numeric.regexp': 1
         'constant.language.boolean.false.coffee': 1
         'constant.language.boolean.true.coffee': 1
         'constant.language.coffee': 1
         'constant.language.null.coffee': 1
+        'constant.numeric.coffee': 1
+        'constant.other.character-class.range.regexp': 1
+        'constant.other.character-class.set.regexp': 1
+        'entity.name.function.coffee': 1
+        'entity.name.type.class.coffee': 1
+        'entity.name.type.instance.coffee': 1
         'entity.name.type.object.coffee': 4 / 3  # forth
+        'entity.other.inherited-class.coffee': 1
+        'keyword.control.anchor.regexp': 1
         'keyword.control.coffee': 1
+        'keyword.control.inheritance.coffee': 1
         'keyword.operator.coffee': 9 / 5  # minor seventh
+        'keyword.operator.negation.regexp': 1
+        'keyword.operator.new.coffee': 1
+        'keyword.operator.or.regexp': 1
+        'keyword.operator.quantifier.regexp': 1
+        'keyword.other.back-reference.regexp': 1
         'keyword.other.coffee': 1
         'keyword.reserved.coffee': 1
+        'meta.assertion.look-ahead.regexp': 1
+        'meta.assertion.negative-look-ahead.regexp': 1
         'meta.brace.curly.coffee': 3 / 2  # fifth
         'meta.brace.round.coffee': 3 / 2
         'meta.brace.square.coffee': 3 / 2
@@ -49,16 +70,29 @@ module.exports =
         'meta.delimiter.method.period.coffee': 8 / 5  # minor sixth
         'meta.delimiter.object.comma.coffee': 8 / 5
         'meta.function.coffee': 1
+        'meta.group.assertion.regexp': 1
+        'meta.group.regexp': 1
         'meta.inline.function.coffee': 1
         'meta.variable.assignment.destructured.array.coffee': 1
         'meta.variable.assignment.destructured.object.coffee': 1
+        'punctuation.definition.character-class.regexp': 1
+        'punctuation.definition.comment.coffee': 1
+        'punctuation.definition.group.regexp': 1
+        'punctuation.definition.string.begin.coffee': 15 / 8  # major seventh
+        'punctuation.definition.string.begin.js': 1
+        'punctuation.definition.string.end.coffee': 2  # octave
+        'punctuation.section.embedded.coffee': 1,
+        'punctuation.separator.key-value': 1
         'punctuation.terminator.statement.coffee': 1
-        'source.coffee': 1  # tonic
+        'source.coffee.embedded.source': 1
+        'storage.type.annotation.coffeescript': 1
+        'storage.type.class.coffee': 1
         'storage.type.function.coffee': 1
-        'string.quoted.double.heredoc.coffee': 6 / 5
-        'string.quoted.heredoc.coffee': 6 / 5
-        'string.quoted.script.coffee': 6 / 5
-        'string.regexp.coffee': 1
+        'string.quoted.double.coffee': 1
+        'string.quoted.double.heredoc.coffee': 1
+        'string.quoted.heredoc.coffee': 1
+        'string.quoted.script.coffee': 1
+        'string.quoted.single.coffee': 1
         'string.regexp.coffee': 1
         'support.class.coffee': 1
         'support.function.coffee': 1
@@ -71,6 +105,7 @@ module.exports =
         'variable.assignment.coffee': 9 / 5
         'variable.language.coffee': 4 / 3
         'variable.other.readwrite.instance.coffee': 4 / 3
+        'variable.parameter.function.coffee': 1
 
     # Initializing function. Atom packages must define it.
     activate: (state) ->
