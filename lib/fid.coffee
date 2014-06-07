@@ -84,6 +84,7 @@ module.exports =
         'punctuation.section.embedded.coffee': 1,
         'punctuation.separator.key-value': 1
         'punctuation.terminator.statement.coffee': 1
+        'source.coffee': 1  # tonic
         'source.coffee.embedded.source': 1
         'storage.type.annotation.coffeescript': 1
         'storage.type.class.coffee': 1
